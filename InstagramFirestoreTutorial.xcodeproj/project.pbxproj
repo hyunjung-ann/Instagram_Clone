@@ -13,6 +13,7 @@
 		14A78D71272400B900034633 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A78D6F272400B900034633 /* Main.storyboard */; };
 		14A78D73272400C200034633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A78D72272400C200034633 /* Assets.xcassets */; };
 		14A78D76272400C200034633 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A78D74272400C200034633 /* LaunchScreen.storyboard */; };
+		14A78D852724032700034633 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D842724032700034633 /* MainTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		14A78D72272400C200034633 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14A78D75272400C200034633 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14A78D77272400C200034633 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14A78D842724032700034633 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,12 @@
 		14A78D68272400B900034633 /* InstagramFirestoreTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				14A78D822724014200034633 /* Model */,
+				14A78D812724013F00034633 /* View */,
+				14A78D802724013A00034633 /* ViewModel */,
+				14A78D7F2724013800034633 /* Controller */,
+				14A78D7E2724011C00034633 /* API */,
+				14A78D7D2724011900034633 /* Utills */,
 				14A78D69272400B900034633 /* AppDelegate.swift */,
 				14A78D6B272400B900034633 /* SceneDelegate.swift */,
 				14A78D6D272400B900034633 /* ViewController.swift */,
@@ -65,6 +73,49 @@
 				14A78D77272400C200034633 /* Info.plist */,
 			);
 			path = InstagramFirestoreTutorial;
+			sourceTree = "<group>";
+		};
+		14A78D7D2724011900034633 /* Utills */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utills;
+			sourceTree = "<group>";
+		};
+		14A78D7E2724011C00034633 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		14A78D7F2724013800034633 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14A78D842724032700034633 /* MainTabController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14A78D802724013A00034633 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		14A78D812724013F00034633 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14A78D822724014200034633 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +190,7 @@
 			files = (
 				14A78D6E272400B900034633 /* ViewController.swift in Sources */,
 				14A78D6A272400B900034633 /* AppDelegate.swift in Sources */,
+				14A78D852724032700034633 /* MainTabController.swift in Sources */,
 				14A78D6C272400B900034633 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
