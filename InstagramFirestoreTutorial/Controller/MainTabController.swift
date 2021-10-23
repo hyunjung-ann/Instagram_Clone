@@ -9,12 +9,11 @@ import UIKit
 
 class MainTabController: UITabBarController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //배경색 설정
-        view.backgroundColor = .red
+        view.backgroundColor = .blue
     }
     
     
