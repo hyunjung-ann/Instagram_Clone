@@ -34,10 +34,13 @@ class MainTabController: UITabBarController {
     func configureViewController() {
         view.backgroundColor = .white  //배경색 설정
         
+        //UICollectionViewFlowLayout 객체 생성
+        let layout = UICollectionViewFlowLayout()
+        
         //각 뷰컨트롤러 인스턴스 저장
-        let feed = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController())
-        
-        
+        let feed = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"),
+                                                rootViewController: FeedController(collectionViewLayout: layout))
+
         let search = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController())
         
         let imageSelector = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: SearchController())
@@ -68,3 +71,5 @@ class MainTabController: UITabBarController {
     }
     
 }
+
+
