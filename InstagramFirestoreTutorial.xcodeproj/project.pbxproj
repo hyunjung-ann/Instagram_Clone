@@ -19,6 +19,8 @@
 		14A78D8B272420B600034633 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D8A272420B600034633 /* ImageSelectorController.swift */; };
 		14A78D8D272420C200034633 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D8C272420C200034633 /* NotificationController.swift */; };
 		14A78D8F272420D200034633 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D8E272420D200034633 /* ProfileController.swift */; };
+		14A78D9127257D5000034633 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D9027257D5000034633 /* FeedCell.swift */; };
+		14A78D932726832D00034633 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D922726832D00034633 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		14A78D8A272420B600034633 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		14A78D8C272420C200034633 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		14A78D8E272420D200034633 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		14A78D9027257D5000034633 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		14A78D922726832D00034633 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		14A78D7D2724011900034633 /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				14A78D922726832D00034633 /* Extensions.swift */,
 			);
 			path = Utills;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		14A78D812724013F00034633 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				14A78D9027257D5000034633 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A78D6E272400B900034633 /* ViewController.swift in Sources */,
+				14A78D9127257D5000034633 /* FeedCell.swift in Sources */,
 				14A78D6A272400B900034633 /* AppDelegate.swift in Sources */,
 				14A78D8D272420C200034633 /* NotificationController.swift in Sources */,
 				14A78D8B272420B600034633 /* ImageSelectorController.swift in Sources */,
@@ -211,6 +218,7 @@
 				14A78D8F272420D200034633 /* ProfileController.swift in Sources */,
 				14A78D87272420A100034633 /* FeedController.swift in Sources */,
 				14A78D852724032700034633 /* MainTabController.swift in Sources */,
+				14A78D932726832D00034633 /* Extensions.swift in Sources */,
 				14A78D6C272400B900034633 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

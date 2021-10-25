@@ -40,7 +40,7 @@ class FeedController: UICollectionViewController{
     func configureUI() {
         //컬렉션 뷰 배경색 변경
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 }
 
@@ -57,8 +57,7 @@ extension FeedController {
     //컬렉션뷰의 지정된 위치에 표시할 셀을 요청하는 메서드.
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //셀 참조 값 가져오기
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .orange
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
         return cell
     }
 }
