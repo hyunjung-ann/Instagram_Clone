@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MainTabController()
+        
+        // rootviewcontroller로 MainTabController,LoginController 전환하기 쉽게 만들어주기
+      //  window?.rootViewController = MainTabController()
+       window?.rootViewController = UINavigationController(rootViewController: LoginController())
         window?.makeKeyAndVisible() //rootViewController(=MainTabController)가 상호작용을 받는 현재 화면으로 세팅
     }
 
