@@ -7,6 +7,19 @@
 
 import UIKit
 
+//UIViewController
+extension UIViewController {
+    func configureGradientLayer() {
+        //배경 그라데이션 넣어주기
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor] //그라데이션 색상
+        gradient.locations = [0,1] //두 색의 경계 정해주기(각 gradient이 멈추는 location)
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
+    }
+}
+
+
 //UIButton
 extension UIButton {
     func attributedTitle(firstPart: String, secondPart: String) {

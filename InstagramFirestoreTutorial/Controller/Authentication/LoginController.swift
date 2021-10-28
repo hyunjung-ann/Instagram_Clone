@@ -57,6 +57,8 @@ class LoginController: UIViewController {
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        //self는 LoginController 참조
         return button
     }()
     
@@ -71,20 +73,26 @@ class LoginController: UIViewController {
         configureUI()
     }
     
+    //MARK:- Actions
+    
+    @objc func handleShowSignUp() {
+        //RegistrationController 인스턴스 저장
+        let controller = RegistrationController()
+        //NavigationController 사용하여 RegistrationController로 화면전환(먼저 Navigation Controller를 embed in)
+        navigationController?.pushViewController(controller, animated: true)
+        print("DEBUG: Show sign up here")
+    }
+    
     //MARK:- Helpers
     
     func configureUI() {
+        //그라데이션 배경 메서드
+        configureGradientLayer()
+        
         view.backgroundColor = .white
         //네비게이션바 숨기기
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        
-        //배경 그라데이션 넣어주기
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor] //그라데이션 색상
-        gradient.locations = [0,1] //두 색의 경계 정해주기(각 gradient이 멈추는 location)
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
         
         //인스타그램 로고 뷰에 추가
         view.addSubview(iconImage)
