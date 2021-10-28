@@ -7,6 +7,29 @@
 
 import UIKit
 
+//UIButton
+extension UIButton {
+    func attributedTitle(firstPart: String, secondPart: String) {
+        //NSAttributedString 문자열 객체는 부분적으로 각기 다른 세부 텍스트 설정 가능
+        //1. 한 글자에 여러개의 Attributes가 적용될 수 있기 때문에, [NSAttributedString.Key: Any] 타입의 Dictionary 사용
+        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87),
+                                                   .font: UIFont.systemFont(ofSize: 16)] //문자열 속성
+        
+        //2. title을 NSMutableAttributedString로 바꿔서 attributedTitle에 저장
+        //attributedTitle 옵션을 추가하고 수정할 것이기 때문에 변경가능한 NSMutableAttributedString 개체 이용
+        //firstPart를 따음표로 묶어주는 이유는 뒤에 스페이스바 처리를 해줘야하기 때문에
+        let attributedTitle = NSMutableAttributedString(string: "\(firstPart) ", attributes: atts)
+        
+        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87),
+                                                   .font: UIFont.boldSystemFont(ofSize: 16)] //문자열 속성
+        attributedTitle.append(NSAttributedString(string: secondPart, attributes: boldAtts))
+
+        //3. setAttributedTitle을 이용해 UIButton에 적용
+        setAttributedTitle(attributedTitle, for: .normal)
+    }
+}
+
+//UIView
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,

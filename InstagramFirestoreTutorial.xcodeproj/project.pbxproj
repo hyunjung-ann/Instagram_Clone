@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141E5D94272AB1C000383239 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E5D93272AB1C000383239 /* CustomTextField.swift */; };
 		14A78D6A272400B900034633 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D69272400B900034633 /* AppDelegate.swift */; };
 		14A78D6C272400B900034633 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D6B272400B900034633 /* SceneDelegate.swift */; };
 		14A78D6E272400B900034633 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D6D272400B900034633 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		141E5D93272AB1C000383239 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		14A78D66272400B900034633 /* InstagramFirestoreTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirestoreTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A78D69272400B900034633 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14A78D6B272400B900034633 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				14A78D9027257D5000034633 /* FeedCell.swift */,
+				141E5D93272AB1C000383239 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141E5D94272AB1C000383239 /* CustomTextField.swift in Sources */,
 				14A78D6E272400B900034633 /* ViewController.swift in Sources */,
 				14A78D9627293D2C00034633 /* LoginController.swift in Sources */,
 				14A78D9127257D5000034633 /* FeedCell.swift in Sources */,
@@ -382,7 +386,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3VP8HUZKTW;
 				INFOPLIST_FILE = InstagramFirestoreTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -390,6 +396,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.InstagramFirestoreTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,7 +407,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3VP8HUZKTW;
 				INFOPLIST_FILE = InstagramFirestoreTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -408,6 +417,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.InstagramFirestoreTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

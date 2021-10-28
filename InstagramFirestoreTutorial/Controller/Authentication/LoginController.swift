@@ -20,35 +20,16 @@ class LoginController: UIViewController {
     }()
     
     //email 텍스트필드 프로퍼티
-    private let emailTextField: UITextField = {
-       let tf = UITextField()
-        tf.borderStyle = .none //테두리(border)의 모양을 정하는 속성, 기본값이 none
-        tf.textColor = .white
-        tf.keyboardAppearance = .dark
+    private let emailTextField: CustomTextField = {
+       let tf = CustomTextField(placeholder: " Email")
         tf.keyboardType = .emailAddress
-        tf.backgroundColor = UIColor(white: 1, alpha: 0.1) //투명하게 처리(불투명도 색상 개체)
-        // NSAttributedString 클래스: text의 여러 속성들을 바꿔 줄 때 사용
-        tf.attributedPlaceholder = NSAttributedString(string: " Email",
-                                                      attributes: [.foregroundColor: UIColor(white: 1,
-                                                                                             alpha: 0.7)])
-        tf.setHeight(50)
        return tf
     }()
     
     //password 텍스트필드 프로퍼티
-    private let passwordTextField: UITextField = {
-       let tf = UITextField()
-        tf.borderStyle = .none //테두리(border)의 모양을 정하는 속성, 기본값이 none
-        tf.textColor = .white
-        tf.keyboardAppearance = .dark
-        tf.keyboardType = .emailAddress
-        tf.backgroundColor = UIColor(white: 1, alpha: 0.1) //투명하게 처리(불투명도 색상 개체)
-        // NSAttributedString 클래스: text의 여러 속성들을 바꿔 줄 때 사용
-        tf.attributedPlaceholder = NSAttributedString(string: " Password",
-                                                      attributes: [.foregroundColor: UIColor(white: 1,
-                                                                                             alpha: 0.7)])
+    private let passwordTextField: CustomTextField = {
+       let tf = CustomTextField(placeholder: " Password")
         tf.isSecureTextEntry = true //텍스트 필드에 입력된 문자가 *로 표시되도록 설정
-        tf.setHeight(50)
        return tf
     }()
     
@@ -67,16 +48,7 @@ class LoginController: UIViewController {
     //forgotPasswordButton 프로퍼티
     private let forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7),
-                                                   .font: UIFont.systemFont(ofSize: 16)] //문자열 속성
-
-        let attributedTitle = NSMutableAttributedString(string: "Forgot your password? ", attributes: atts)
-        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7),
-                                                   .font: UIFont.boldSystemFont(ofSize: 16)] //문자열 속성
-        attributedTitle.append(NSAttributedString(string: "Get help signing in.", attributes: boldAtts))
-
-        //3. setAttributedTitle을 이용해 UIButton에 적용
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.attributedTitle(firstPart: "Forgot your password?", secondPart: "Get help signing in.")
         return button
     }()
     
@@ -84,22 +56,7 @@ class LoginController: UIViewController {
     //dontHaveAccountButton 프로퍼티
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        //NSAttributedString 문자열 객체는 부분적으로 각기 다른 세부 텍스트 설정 가능
-        //1. 한 글자에 여러개의 Attributes가 적용될 수 있기 때문에, [NSAttributedString.Key: Any] 타입의 Dictionary 사용
-        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7),
-                                                   .font: UIFont.systemFont(ofSize: 16)] //문자열 속성
-        //2. title을 NSMutableAttributedString로 바꿔서 attributedTitle에 저장
-        //attributedTitle 옵션을 추가하고 수정할 것이기 때문에 변경가능한 NSMutableAttributedString 개체 이용
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ", attributes: atts)
-        
-        
-        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7),
-                                                   .font: UIFont.boldSystemFont(ofSize: 16)] //문자열 속성
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: boldAtts))
-        
-        //3. setAttributedTitle을 이용해 UIButton에 적용
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        
+        button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
         return button
     }()
     
