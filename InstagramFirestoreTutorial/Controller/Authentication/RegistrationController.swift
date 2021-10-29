@@ -11,6 +11,9 @@ class RegistrationController: UIViewController {
 
     //MARK:- Properties
     
+    //model-1. 회원가입 Model
+    private var viewModel = RegistrationViewModel()
+    
     //사진 추가 버튼 프로퍼티
     private let plushPhotoButton : UIButton = {
         let button = UIButton(type: .system)
@@ -67,6 +70,7 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
 
     }
     
@@ -77,6 +81,23 @@ class RegistrationController: UIViewController {
         navigationController?.popViewController(animated: true)
         print("DEBUG: Show login here")
     }
+    
+    
+    //model-3. 텍스트 변경 액션 메서드
+    @objc func textDidChange(sender: UITextField) { //이메일,패스워드 텍스트필드 구분 -> sender
+        if sender == emailTextField { //emailTextField 작성할 경우,
+            viewModel.email = sender.text //viewmodel의 email 값은 sender이 작성한 텍스트 값이 된다.
+        } else if sender == passwordTextField { //패스워드 텍스트필드 작성 중일 경우,
+            viewModel.password = sender.text //viewmodel의 password 값은 sender이 작성한 텍스트 값이 된다.
+        } else if sender == fullnameTextField {
+            viewModel.fullname = sender.text
+        } else {
+            viewModel.username = sender.text
+        }
+        
+        updateForm()
+    }
+    
     
     //MARK: - Helpers
     
@@ -105,5 +126,30 @@ class RegistrationController: UIViewController {
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
     }
+    
+    //model-2. email,password TextField에서 텍스트가 변경될 때 마다 호출되는 메서드
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 
+}
+
+// MARK:- FormViewModel
+
+extension RegistrationController : FormViewModel {
+    func updateForm() {
+
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        
+        //이메일,패스워드 값을 입력하면(양식이 맞으면) 버튼 활성화
+        //이 코드가 없으면, 이메일,패스워드 값 입력해도 버튼 활성화가 되지않는다.
+        signUpButton.isEnabled = viewModel.formIsValid
+        
+        print("DEBUG: Form is valid \(viewModel.formIsValid)")
+    }
+    
 }

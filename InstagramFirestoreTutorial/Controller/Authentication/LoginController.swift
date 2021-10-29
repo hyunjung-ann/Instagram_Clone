@@ -98,14 +98,9 @@ class LoginController: UIViewController {
             viewModel.password = sender.text //viewmodel의 password 값은 sender이 작성한 텍스트 값이 된다.
         }
         
-        //viewmodel backgroundColor,setTitleColor
-        loginButton.backgroundColor = viewModel.buttonBackgroundColor
-        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
-        //이메일,패스워드 값을 입력하면(양식이 맞으면) 버튼 활성화
-        //이 코드가 없으면, 이메일,패스워드 값 입력해도 버튼 활성화가 되지않는다.
-        loginButton.isEnabled = viewModel.formIsValid
-        
-        print("DEBUG: Form is valid \(viewModel.formIsValid)")
+        //버튼 활성화 관련 viewmodel 프로토콜 준수한 함수 호출
+        updateForm()
+    
     }
     
     
@@ -150,4 +145,24 @@ class LoginController: UIViewController {
     }
 
 
+}
+
+// MARK:- FormViewModel
+
+//AuthenticationViewModel -> 프로토콜 'FormViewModel' 준수  (프로토콜 개념 이해하기!)
+extension LoginController : FormViewModel {
+    func updateForm() {
+        
+        //viewmodel backgroundColor,setTitleColor
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        
+        //이메일,패스워드 값을 입력하면(양식이 맞으면) 버튼 활성화
+        //이 코드가 없으면, 이메일,패스워드 값 입력해도 버튼 활성화가 되지않는다.
+        loginButton.isEnabled = viewModel.formIsValid
+        
+        print("DEBUG: Form is valid \(viewModel.formIsValid)")
+    }
+    
+    
 }
