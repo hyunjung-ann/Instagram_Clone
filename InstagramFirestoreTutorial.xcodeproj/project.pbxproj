@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		141E5D94272AB1C000383239 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E5D93272AB1C000383239 /* CustomTextField.swift */; };
+		141E5D96272B24B100383239 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E5D95272B24B100383239 /* AuthenticationViewModel.swift */; };
 		14A78D6A272400B900034633 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D69272400B900034633 /* AppDelegate.swift */; };
 		14A78D6C272400B900034633 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D6B272400B900034633 /* SceneDelegate.swift */; };
 		14A78D6E272400B900034633 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A78D6D272400B900034633 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		141E5D93272AB1C000383239 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		141E5D95272B24B100383239 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		14A78D66272400B900034633 /* InstagramFirestoreTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirestoreTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A78D69272400B900034633 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14A78D6B272400B900034633 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		14A78D802724013A00034633 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				141E5D95272B24B100383239 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				14A78D9127257D5000034633 /* FeedCell.swift in Sources */,
 				14A78D6A272400B900034633 /* AppDelegate.swift in Sources */,
 				14A78D8D272420C200034633 /* NotificationController.swift in Sources */,
+				141E5D96272B24B100383239 /* AuthenticationViewModel.swift in Sources */,
 				14A78D8B272420B600034633 /* ImageSelectorController.swift in Sources */,
 				14A78D89272420AA00034633 /* SearchController.swift in Sources */,
 				14A78D8F272420D200034633 /* ProfileController.swift in Sources */,

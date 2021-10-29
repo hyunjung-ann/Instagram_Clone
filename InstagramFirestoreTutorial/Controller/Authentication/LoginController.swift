@@ -11,6 +11,9 @@ class LoginController: UIViewController {
 
     //MARK:- Properties
     
+    //로그인 모델 인스턴스 생성
+    private var viewModel = LoginViewModel()
+    
     //인스타그램 로고 프로퍼티
     private let iconImage : UIImageView = {
     let iv = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
@@ -38,9 +41,10 @@ class LoginController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal) //버튼 타이틀 설정
         button.setTitleColor(.white, for: .normal) //버튼 타이틀 색깔
-        button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1) //버튼 배경색 -> ColorLiteral 사용
+        button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5) //버튼 배경색 -> ColorLiteral 사용 + 불투명도 0.5
         button.layer.cornerRadius = 5 //버튼 모서리 설정
         button.setHeight(50) //버튼 높이 설정
+        button.isEnabled = false //false로 비활성화된 컨트롤은 터치 이벤트를 무시
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         return button
     }()
@@ -71,17 +75,39 @@ class LoginController: UIViewController {
         view.backgroundColor = .systemRed
         
         configureUI()
+        configureNotificationObservers() //2. 호출
     }
     
     //MARK:- Actions
     
+    //화면전환 액션 메서드
     @objc func handleShowSignUp() {
         //RegistrationController 인스턴스 저장
         let controller = RegistrationController()
         //NavigationController 사용하여 RegistrationController로 화면전환(먼저 Navigation Controller를 embed in)
         navigationController?.pushViewController(controller, animated: true)
         print("DEBUG: Show sign up here")
+        
     }
+    
+    //3. 텍스트 변경 액션 메서드
+    @objc func textDidChange(sender: UITextField) { //이메일,패스워드 텍스트필드 구분 -> sender
+        if sender == emailTextField { //emailTextField 작성할 경우,
+            viewModel.email = sender.text //viewmodel의 email 값은 sender이 작성한 텍스트 값이 된다.
+        } else { //패스워드 텍스트필드 작성 중일 경우,
+            viewModel.password = sender.text //viewmodel의 password 값은 sender이 작성한 텍스트 값이 된다.
+        }
+        
+        //viewmodel backgroundColor,setTitleColor
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        //이메일,패스워드 값을 입력하면(양식이 맞으면) 버튼 활성화
+        //이 코드가 없으면, 이메일,패스워드 값 입력해도 버튼 활성화가 되지않는다.
+        loginButton.isEnabled = viewModel.formIsValid
+        
+        print("DEBUG: Form is valid \(viewModel.formIsValid)")
+    }
+    
     
     //MARK:- Helpers
     
@@ -115,6 +141,12 @@ class LoginController: UIViewController {
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
+    }
+    
+    //1. email,password TextField에서 텍스트가 변경될 때 마다 호출되는 메서드
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
 
 
