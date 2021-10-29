@@ -19,6 +19,8 @@ class RegistrationController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
+        //ImagePicker(1). handleProfilePhotoSelect 액션 추가
+        button.addTarget(self, action: #selector(handleProfilePhotoSelect), for: .touchUpInside)
         return button
     }()
     
@@ -63,7 +65,7 @@ class RegistrationController: UIViewController {
         return button
     }()
     
-    
+
     
     //MARK:- Lifecycle
     
@@ -96,6 +98,23 @@ class RegistrationController: UIViewController {
         }
         
         updateForm()
+    }
+    
+    //ImagePicker(2). picker 를 보여줄 'handleProfilePhotoSelect' 메소드 정의
+    @objc func handleProfilePhotoSelect() {
+        
+        //전역 변수로 imagePicker 생성
+        //UIImagePickerController를 사용해 이미지 수정 및 가져오기
+        let picker = UIImagePickerController()
+        
+        //self는 RegistrationController, self를 picker.delegate에 할당하려면 self는 UINavigationControllerDelegate 타입이어야 한다. 그래서 아래 익스텐션으로 상속해줌
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        //간단히 present만으로 imagePickerController를 띄울수 있다.
+        present(picker, animated: true, completion: nil)
+        
+        print("DEBUG: Show Photo library here...")
     }
     
     
@@ -152,4 +171,35 @@ extension RegistrationController : FormViewModel {
         print("DEBUG: Form is valid \(viewModel.formIsValid)")
     }
     
+}
+
+// MARK:- UIImagePickerControllerDelegate
+
+/*UIImagePickerController를 사용하기 위해서는 UIImagePickerControllerDelegate,UINavigationControllerDelegate 상속받아야한다.
+- UIImagePickerControllerDelegate = 이미지를 선택하고 카메라를 찍었을 때 다양한 동작을 도와줌
+- UINavigationControllerDelegate = 앨범 사진을 선택했을 때, 화면 전환을 네비게이션으로 이동
+*/
+
+//카메라나 앨범등 PickerController가 사용되고 이미지 촬영을 했을 때 발동 된다.
+extension RegistrationController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
+    
+    //picking을 했을때 이미지 적용 기능 -> 이 메서드가 없으면 사진 선택을 해도 프로필이미지 버튼에 적용이 안됨
+    //Dictionary 타입은 info에 정보들이 들어옴
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //1. 카메라나 앨범에서 사용하기 버튼을 눌렀을 때, info에 설정 때 따라서 image가 selectImage에 저장
+        guard let selectImage = info[.editedImage] as? UIImage else { return }
+        
+        //2.앨범에서 선택한 사진을 적용할 때, 버튼 속성
+        plushPhotoButton.layer.cornerRadius = plushPhotoButton.frame.width / 2
+        plushPhotoButton.layer.masksToBounds = true // Layer에 경계에 맞추어 내용이 잘림
+        plushPhotoButton.layer.borderColor = UIColor.white.cgColor //테두리 색
+        plushPhotoButton.layer.borderWidth = 2 //테두리 굵기
+        plushPhotoButton.setImage(selectImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        //image rendering mode : 원본(Originals)이미지에서 컬러 정보가 모두 보이게함
+        
+        //3. dismiss해주지 않으면 choose한 후, imagePickerController가 사라지지않고 뷰에 계속 머물러있음
+        self.dismiss(animated: true, completion: nil)
+    }
 }
